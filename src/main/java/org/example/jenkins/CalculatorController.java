@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class CalculatorController {
 
     @Autowired
-    private org.example.calculator.CalculatorService calculatorService;
+    private org.example.jenkins.CalculatorService calculatorService;
 
     @GetMapping("/add")
     public double add(@RequestParam double a, @RequestParam double b) {
