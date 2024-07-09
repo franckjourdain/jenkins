@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables if needed
-        DOCKER_IMAGE = "your-docker-image-name"
+        DOCKER_IMAGE = "c73f7d8602800cf6fb88289039f86de31e6ab85d9bf5b358e032e889f2853a2e"
         DOCKER_TAG = "latest"
     }
 
@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
+                    sh './mvnw clean package'
                     sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
@@ -29,7 +30,7 @@ pipeline {
                 script {
                     // Run your tests here
                     // For example, you could run a container from the built image and execute tests inside it
-                    sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} bash ./mvnw test"
+                    sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} "
                 }
             }
         }
